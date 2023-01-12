@@ -1,0 +1,76 @@
+@font-face {
+    font-family: alarmClock;
+    src: url(font/alarm\ clock.ttf);
+}
+
+:root {
+    font-family: alarmClock;
+    --font-color: #A3E635;
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+}
+
+.watchContainer {
+    background-image: url(/img/cityNight.jpg);
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.watch {
+    border: 2px solid red;
+    width: 250px;
+    height: 400px;
+}
+
+.display {
+    height: 30%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    color: var(--font-color);
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.controls {
+    width: 100%;
+    height: 25%;
+    border: 2px solid lime;
+    display: flex;
+}
+
+.controls > button {
+    width: 50%;
+    height: 50%;
+    border: none;
+    outline: none;
+}
+
+.go {
+    background-color: var(--font-color);
+}
+
+.stop {
+    background-color: #F43F5E;
+}
+
+#reset {
+    background-color: #FBBF24;
+}
