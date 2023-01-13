@@ -8,9 +8,12 @@ let tensDiv = document.querySelector('.tens')
 let tens = 00
 let seconds = 00
 let minutes = 00
+let isRunning = false
+let interval
 
 window.onload = () => {
     updateDisplay()
+    isRunning = false
 }
 
 function startTimer(){
@@ -27,9 +30,28 @@ function startTimer(){
 }
 
 startBtn.addEventListener('click', () => {
-    setInterval(startTimer, 10)
+    if (!isRunning){
+        interval = setInterval(startTimer, 10) 
+        isRunning = true
+        updateBtn(isRunning)
+    } else if (isRunning){
+        clearInterval(interval)
+        isRunning = false
+        updateBtn(isRunning)
+    }
+
     
 })
+
+const updateBtn = (status) => {
+    if (status){
+        startBtn.classList.replace('go', 'stop')
+        startBtn.textContent = 'Stop'
+    } else {
+        startBtn.classList.replace('stop', 'go')
+        startBtn.textContent = 'Start'
+    }
+}
 
 const updateDisplay = () => {
     if (tens <= 9){
@@ -57,9 +79,3 @@ const updateDisplay = () => {
     }
 }
 
-// let myInterval = setInterval(myTimer, 1000);
-// let i = 0;
-// function myTimer() {
-//   document.querySelector('.tens').innerHTML = i;
-//   i++;
-// }
