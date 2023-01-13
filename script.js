@@ -5,12 +5,16 @@ const display = document.querySelector('.display')
 let minutesDiv = document.querySelector('.minutes')
 let secondsDiv = document.querySelector('.seconds')
 let tensDiv = document.querySelector('.tens')
-let tens = 0
-let seconds = 0
-let minutes = 0
+let tens = 00
+let seconds = 00
+let minutes = 00
+
+window.onload = () => {
+    updateDisplay()
+}
 
 function startTimer(){
-    tens += 10
+    tens++
     if (tens == 1000){
         tens = 0
         seconds++
@@ -30,9 +34,17 @@ startBtn.addEventListener('click', () => {
 const updateDisplay = () => {
     if (tens <= 9){
         tensDiv.textContent = '0' + tens
-    } else {
+    } else{
         tensDiv.textContent = tens
     } 
+    if (tens > 99) {
+        console.log(seconds)
+        seconds++
+        secondsDiv.textContent = '0' + seconds
+        tens = 0
+        tensDiv.textContent = '0' + 0
+    }
+    
     if (seconds <= 9){
         secondsDiv.textContent = '0' + seconds
     } else {
