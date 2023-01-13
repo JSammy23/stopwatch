@@ -68,6 +68,7 @@ const recordTime = () => {
     report = Array.from(`${m}${s}${t}`)
     console.log(report)
     reports.push(report)
+    updateRecords()
 
 }
 
@@ -104,6 +105,13 @@ const updateDisplay = () => {
         minutesDiv.textContent = '0' + minutes
     } else {
         minutesDiv.textContent = minutes
+    }
+}
+
+const updateRecords = () => {
+    for (let index = 0; index < reports.length; index++) {
+        const stamp = reports[index];
+        document.querySelector('.recordsDisplay').textContent = stamp
     }
 }
 
