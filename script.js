@@ -1,6 +1,6 @@
-const resetBtn = document.querySelector('.reset')
+const resetBtn = document.getElementById('reset')
 const startBtn = document.getElementById('start')
-const recordBtn = document.querySelector('.record')
+const recordBtn = document.getElementById('record')
 const display = document.querySelector('.display')
 let minutesDiv = document.querySelector('.minutes')
 let secondsDiv = document.querySelector('.seconds')
@@ -28,6 +28,15 @@ function startTimer(){
     }
     updateDisplay()
 }
+
+resetBtn.addEventListener('click', () => {
+    if(isRunning) return
+    tens = 00
+    seconds = 00
+    minutes = 00
+    isRunning = false
+    updateDisplay()
+})
 
 startBtn.addEventListener('click', () => {
     if (!isRunning){
