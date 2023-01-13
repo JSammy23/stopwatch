@@ -10,6 +10,13 @@ let seconds = 00
 let minutes = 00
 let isRunning = false
 let interval
+let reports = []
+
+const timeStamp = (minutes, seconds, tens) => {
+    min = minutes
+    sec = seconds
+    ten = tens
+}
 
 window.onload = () => {
     updateDisplay()
@@ -48,9 +55,21 @@ startBtn.addEventListener('click', () => {
         isRunning = false
         updateBtn(isRunning)
     }
-
-    
 })
+
+recordBtn.addEventListener('click', () => {
+    recordTime() 
+})
+
+const recordTime = () => {
+    let m = minutesDiv.textContent
+    let s = secondsDiv.textContent
+    let t = tensDiv.textContent
+    report = Array.from(`${m}${s}${t}`)
+    console.log(report)
+    reports.push(report)
+
+}
 
 const updateBtn = (status) => {
     if (status){
@@ -69,7 +88,7 @@ const updateDisplay = () => {
         tensDiv.textContent = tens
     } 
     if (tens > 99) {
-        console.log(seconds)
+        // console.log(seconds)
         seconds++
         secondsDiv.textContent = '0' + seconds
         tens = 0
