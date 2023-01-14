@@ -62,12 +62,17 @@ recordBtn.addEventListener('click', () => {
 })
 
 const recordTime = () => {
-    let m = minutesDiv.textContent
-    let s = secondsDiv.textContent
-    let t = tensDiv.textContent
+    let m = minutesDiv.textContent.toString()
+    let s = secondsDiv.textContent.toString()
+    let t = tensDiv.textContent.toString()
     report = Array.from(`${m}${s}${t}`)
     console.log(report)
-    reports.push(report)
+    let getMinutes = report[0] + report[1]
+    let getSeconds = report[2] + report[3]
+    let getTens = report[4] + report[5]
+    let timeStamp = `${getMinutes}:${getSeconds}:${getTens}`
+    console.log(timeStamp)
+    reports.push(timeStamp)
     updateRecords()
 
 }
@@ -111,7 +116,7 @@ const updateDisplay = () => {
 const updateRecords = () => {
     for (let index = 0; index < reports.length; index++) {
         const stamp = reports[index];
-        document.querySelector('.recordsDisplay').textContent = stamp
+        document.querySelector('.recordsDisplay').textContent += stamp
     }
 }
 
