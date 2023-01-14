@@ -73,8 +73,19 @@ const recordTime = () => {
     let timeStamp = `${getMinutes}:${getSeconds}:${getTens}`
     console.log(timeStamp)
     reports.push(timeStamp)
+    resetDom()
     updateRecords()
+}
 
+const createTimeCard = (report) => {
+    const card = document.createElement('p')
+    const display = document.querySelector('.recordsDisplay')
+    card.textContent = report
+    display.appendChild(card)
+}
+
+const resetDom = () => {
+    document.querySelector('.recordsDisplay').textContent = ''
 }
 
 const updateBtn = (status) => {
@@ -115,8 +126,7 @@ const updateDisplay = () => {
 
 const updateRecords = () => {
     for (let index = 0; index < reports.length; index++) {
-        const stamp = reports[index];
-        document.querySelector('.recordsDisplay').textContent += stamp
+        createTimeCard(reports[index]);
     }
 }
 
